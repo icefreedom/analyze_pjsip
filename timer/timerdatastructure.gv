@@ -1,0 +1,31 @@
+digraph timer_gv {
+    fontsize = 10;
+    
+    node[ fontsize = 10, color = "skyblue", shape = "record"];
+    edge[ fontsize = 10, color = "crimson", shape = "solid"];
+
+    timer_entry[label="{<head>timer_entry | timer_value | timer_id}"];
+    heap[label="{<head>heap | <E0>E0 | E1 | E2 | E3 | E4| ...}"];
+
+    subgraph b_tree {
+        label = "heap structure";
+        node[fontname = "myfont", fontsize = 10, color = "skyblue", shape = "ellipse"];
+        edge[fontname = "myfont", fontsize = 10, color = "black", shape = "solid"];
+        E0;
+        E1;
+        E2;
+        E3;
+        E4;
+        E0 -> E1;
+        E0 -> E2;
+        E1 -> E3;
+        E1 -> E4;
+    }
+
+    timer_ids[label="{<head>timer_ids | <ID0> ID0 | ID1 | <ID2>ID2 | ID3 | <ID4>ID4 | ...}"];
+    free_id_list;
+    timer_ids:ID0 -> heap:E0;
+    free_id_list -> timer_ids:ID2 -> timer_ids:ID4;
+}
+
+

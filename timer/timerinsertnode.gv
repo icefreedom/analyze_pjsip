@@ -1,0 +1,50 @@
+digraph insert_node {
+    node[fontsize = 10, color = "skyblue", shape = "record"]
+    edge[fontsize = 10, color = "crimson", shape = "solid"]
+    subgraph cluster0{
+    label = "init";
+    bgcolor = "mintcream";
+    E0[label="{E0 | v=0}"];
+    E1[label="{E1 | v=2}"];
+    E2[label="{E2 | v=4}"];
+    E3[label="{E3 | v=3}"];
+    E4[label="{E4 | v=5}"];
+    E0 -> E1;
+    E0 -> E2;
+    E1 -> E3;
+    E1 -> E4;
+    }
+
+    subgraph cluster1{
+        label = "insert node E5";
+        bgcolor = "mintcream";
+        t2E0[label="{E0 | v=0}"];
+        t2E1[label="{E1 | v=2}"];
+        t2E2[label="{E2 | v=4}"];
+        t2E3[label="{E3 | v=3}"];
+        t2E4[label="{E4 | v=5}"];
+        t2E5[label="{E5 | v=1}", style="dashed"];
+        t2E0 -> t2E1;
+        t2E0 -> t2E2;
+        t2E1 -> t2E3;
+        t2E1 -> t2E4;
+        t2E2 -> t2E5[style="dashed"]
+    }
+
+    subgraph cluster2{
+        label = "finish to insert";
+        bgcolor = "mintcream";
+        t3E0[label="{E0 | v=0}"];
+        t3E1[label="{E1 | v=2}"];
+        t3E2[label="{E2 | v=4}"];
+        t3E3[label="{E3 | v=3}"];
+        t3E4[label="{E4 | v=5}"];
+        t3E5[label="{E5 | v=1}"];
+        t3E0 -> t3E1;
+        t3E0 -> t3E5;
+        t3E1 -> t3E3;
+        t3E1 -> t3E4;
+        t3E5 -> t3E2;
+    }
+
+}
