@@ -1,0 +1,18 @@
+digraph ioqueue_flow {
+    node[fontsize = 10, color = "skyblue", shape = "record"];
+    edge[fontsize = 10, color = "black", shape = "solid"];
+    
+    pj_ioqueue_poll;
+    ioqueue_dispatch_read_event;
+    ioqueue_dispatch_write_event;
+    pj_sock_recv;
+    pj_sock_send;
+    ioqueue_add_to_set1[lable = "ioqueue_add_to_set"];
+    ioqueue_add_to_set2[lable = "ioqueue_add_to_set"];
+    pj_ioqueue_poll -> ioqueue_dispatch_read_event;
+    pj_ioqueue_poll -> ioqueue_dispatch_write_event;
+    ioqueue_dispatch_read_event -> pj_sock_recv[label = "read"];
+    pj_sock_recv -> ioqueue_add_to_set1[label = "put rfd to set"];
+    ioqueue_dispatch_write_event -> pj_sock_send[label = "write"];
+    pj_sock_send -> ioqueue_add_to_set2[label = "put wfd to set"];
+}

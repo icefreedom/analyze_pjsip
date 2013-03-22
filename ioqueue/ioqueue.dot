@@ -1,0 +1,12 @@
+digraph ioqueue_data_structure{
+    node[fontsize = 10, color = "skyblue", shape = "record"];
+    edge[fontsize = 10, color = "red", shape = "solid"];
+    pj_ioqueue_t[label="{<head>pj_ioqueue_t | <key_list>key_list | rfdset | wfdset}"];
+    pj_ioqueue_key_t[label="{<head>pj_ioqueue_key_t | socket_fd | <read_list>read_list | <write_list>write_list}"];
+    read_operation[label="{<head>read_operation}"];
+    write_operation[label="{<write>write_operation}"];
+    pj_ioqueue_t:key_list -> pj_ioqueue_key_t[label="active key list"];
+    pj_ioqueue_key_t:read_list -> read_operation[label="read ops"];
+    pj_ioqueue_key_t:write_list -> write_operation[label="write ops"];
+    
+}
